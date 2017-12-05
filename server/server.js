@@ -10,4 +10,6 @@ app.use(bodyParser.json());
 // app.get('*', function(req, res) {
 //  res.sendFile(path.join(__dirname, '../public/index.html'));
 //  });
-app.listen(3000); //listens on port 3000 -> http://localhost:3000/
+app.listen(3000, () => {
+  console.log('This mothafucka is listening at 3000');
+}); //listens on port 3000 -> http://localhost:3000/
