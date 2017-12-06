@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+
+import '../../css/styles.css'
 import Question from './Question'
 import Quiz from './Quiz';
 import Login from '../containers/Login';
