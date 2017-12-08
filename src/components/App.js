@@ -148,7 +148,7 @@ class App extends Component {
     //axios.post('/save',{username:this.state.username,password:this.state.password})
   }
 
-  handleSubmit = () => {
+  nextSubmit = () => {
     const { quiz } = this.state;
     const stateNew = Object.assign({}, this.state);
     console.log('index', quiz.index)
@@ -159,13 +159,6 @@ class App extends Component {
     } else {
       stateNew.quiz.completed = true;
       this.setState(stateNew);
-      // let score = quiz.score;
-      // stateNew.quiz.answers.map((answer, i) => (
-      //   score = score + quiz.questions[i].answers[answer].point
-      // ))
-      // console.log('score', score);
-      // stateNew.quiz.score = score;
-      // this.setState(stateNew)
     }
   }
 
@@ -216,7 +209,7 @@ class App extends Component {
                 score = {this.state.quiz.score}
                 completed = {this.state.quiz.completed}
                 handleAnswerSelected = {this.handleAnswerSelected}
-                handleSubmit = {this.handleSubmit}
+                nextSubmit = {this.nextSubmit}
                 logSuccess = {this.state.logSuccess}
                 retakeQuiz = {this.retakeQuiz} />
 

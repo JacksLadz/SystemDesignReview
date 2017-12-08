@@ -11,7 +11,7 @@ class Question extends Component {
   }
 
   render() {
-    const { question, index, onAnswerSelected, onSubmit } = this.props;
+    const { question, index, onAnswerSelected, nextSubmit } = this.props;
     const styles = {
       block: {
         maxWidth: 250,
@@ -68,7 +68,7 @@ class Question extends Component {
               labelStyle={styles.label}
             />
           </RadioButtonGroup>
-          <RaisedButton label="Submit" primary={true} style={styles.submit} onClick={handleSubmit} />
+          <RaisedButton label="Submit" primary={true} style={styles.submit} onClick={nextSubmit} />
         </div>
       </MuiThemeProvider>
     )

@@ -8,7 +8,7 @@ import '../../css/styles.css'
 class Quiz extends Component {
 
   render() {
-    const { quiz, index, numberOfQuestions, score, completed, handleAnswerSelected, handleSubmit,logSuccess, retakeQuiz } = this.props
+    const { quiz, index, numberOfQuestions, score, completed, handleAnswerSelected, nextSubmit,logSuccess, retakeQuiz } = this.props
 //if the user is verified then the questions are retrieved
     if (logSuccess)
     return (
@@ -30,7 +30,7 @@ class Quiz extends Component {
               question={quiz.questions[index]}
               index={index}
               onAnswerSelected={(event) => handleAnswerSelected(event)}
-              handleSubmit={() => handleSubmit()}
+              nextSubmit={() => nextSubmit()}
             />
 
           </div>
