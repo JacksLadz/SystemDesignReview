@@ -1,58 +1,78 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
-// import '../../css/login.css'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import '../../css/styles.css'
+import Background from '../../css/animalCollective.jpg'
 
 class Login extends Component {
 
     //function
 
     render() {
-
+      const styles = {
+        input: {
+          width: '90%',
+          padding: '15px',
+          'border': '1px solid black'
+        },
+        button: {
+          border: '1px solid gray',
+          padding: '5px'
+        }
+      }
       const {
         userChange,
         passChange,
+        emailChange,
         userSubmit,
         userSave,
         isNew,
         logSuccess,
         handleNew,
-        username
+        username,
+        password,
+        email,
+        handleLogout
       } = this.props;
 
-      console.log(isNew)
+      // render login page when member is not new and not logged in
       if (!isNew && !logSuccess) {
         return (
-            <div>
-              <h2>LOGIN</h2>
-
+            <div className="innerBox">
+              {/*<span style={{'margin-left':'50%'}}><h2>LOGIN</h2></span>*/}
               <form>
-                <input onChange={userChange} name="username" type= "text" placeholder="username"/><br/><br/>
-                <input onChange={passChange} name="password" type="password" placeholder="password"/><br/>
-                <input onClick={userSubmit} type="submit"/>
+                <input className="userName" onChange={userChange} value= {username} name="username" type= "text" placeholder="username" /><br/>
+                <input className="pword" onChange={passChange} name="password" value = {password} type="password" placeholder="password" /><br/>
+                <input value="Log In" className="but" onClick={userSubmit} type="submit" />
+                <input id="register" className="but" type="submit" value="New Account" href="" onClick={handleNew}/>
               </form>
-            <br/>
-              <a href="" onClick={handleNew}>create new account</a>
+
             </div>
         );
       }
+
+      //render new account page if member is new and not logged in
       else if (isNew&& !logSuccess) {
         return (
-          <div>
-              <h3>CREATE NEW ACCOUNT</h3>
+          <div className="innerBox">
+              <span style={{fontSize: '20px'}}>New Account</span>
               <form>
-                <input onChange={userChange} name="username" type= "text" placeholder="username"/><br/><br/>
-                <input onChange={passChange} name="password" type="password" placeholder="password"/><br/>
-                <input onClick={userSave} type="submit"/>
+                <input className="userName" onChange={userChange} value={username} name="username" type= "text" placeholder="username"/><br/>
+                <input className="pword" onChange={passChange} value = {password} name="password" type="password" placeholder="password"/><br/>
+                <input className="email" onChange={emailChange} value = {email} name="email" type="text" placeholder="email"/><br/>
+                <input value="Add Account" className="but" onClick={userSave} type="submit"/>
               </form>
           </div>
         )
       }
+
+      //render welcome page if member is logged in
       else if (logSuccess) {
         return (
           <div>
-            <h3>Welcome, {username}</h3>
           </div>
         )
       }

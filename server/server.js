@@ -3,11 +3,12 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const config = require('./config/main.js');
+const logger = require('morgan');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(logger('dev')); // Log requests to api using morgan
+app.use(logger('dev')); // Log requests to api using morgan
 
 // app.get('*', function(req, res) {
 //  res.sendFile(path.join(__dirname, '../public/index.html'));
@@ -27,15 +28,13 @@ app.all('/*', function(req, res, next) {
 });
 
 // app.all('/api/v1/*', [require('./middlewares/validateRequest')]);
-
 app.use('/', require('./router.js'));
 
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
+// app.use(function(req, res, next) {
+//     var err = new Error('Not Found');
+//     err.status = 404;
+//     next(err);
+// });
 
-// app.listen(3000);
 const server = app.listen(config.port); //listens on port 3000 -> http://localhost:3000/
 // console.log('Your server is running on port ' + config.port + '.');

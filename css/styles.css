@@ -1,19 +1,178 @@
-.innerBox {
-    box-sizing: border-box;
-    font-family: 'Ubuntu Light', 'Century Gothic', sans-serif;
-    color: #393939;
-    background-color: #FFF;
-    max-width: 12em;
-    padding: 10px;
-    box-shadow: 10px 15px 39px rgba(0, 0, 0, .2);
-    border-radius: 5px;
+* {
+  box-sizing: border-box;
 }
 
-.but {
-  width:90%;
-  margin-top:.4em;
+body {
+  font-family: Verdana;
+  background-color: #00A3CA;
+}
+
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.background {
+  z-index:-1;
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  margin: 0;
+  opacity:0.7;
+    /* Set rules to fill background */
+  /*min-height: 750px;*/
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: 860px;
+
+  /* Set up positioning */
+  top: 0;
+  left: 0;
+}
+
+form {
+    margin: none;
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.innerBox {
+    position: relative;
+    width: 400px;
+    height: 315px;
+    margin: 25% auto;
+    box-sizing: border-box;
+    /*font-family: 'Ubuntu Light', 'Century Gothic', sans-serif;*/
+    color: #393939;
+    /*max-width: 12em;*/
+    padding: 10px;
+    /*box-shadow: 10px 15px 39px rgba(0, 0, 0, .2);*/
+    border: 2px solid #EEE;
+    border-radius: 10px;
+    background-color: #EEE;
+}
+
+.loginWrapper {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  /*border: 1px solid blue;*/
 }
 
 .userName {
   margin-bottom:.4em;
+}
+
+.pword {
+  margin-bottom:.4em;
+}
+
+.but {
+    background-color: #00A3CA; /*#4CAF50;*/
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid #00A3CA; /*#4CAF50;*/
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+  /*margin-top:.4em;*/
+}
+
+.but:hover {
+  opacity: 0.5;
+}
+
+#register {
+  background-color: white;
+  color: #00A3CA;
+  border: 1px solid white;
+}
+
+#register:hover {
+/*  background-color: #00A3CA;
+  color: white;*/
+}
+
+.title {
+  text-align:center;
+  background-color: #eee;
+  border-bottom: 3px solid black;
+}
+
+.sdr {
+    font-size:4em;
+}
+
+.quizWrapper {
+  z-index: 4;
+}
+
+.theQuiz {
+  height: 800px;
+  color: white;
+  background-color: rgb(51, 51, 51);
+  border: 1px solid rgba(0, 144, 247, .7);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2.5em 2.5em;
+}
+
+.questionWrapper {
+  color: #eee;
+}
+
+.questionText {
+  font-size: 30px;
+  font-weight: 400;
+  /*background-color: green;*/
+  margin-left: 2.5%;
+  color: #eee;
+}
+
+.retakeBtn {
+  padding: 14px 20px;
+  margin: 12px auto;
+  display: block;
+  background-color: #00A3CA; /*#4CAF50;*/
+  color: white;
+  border: 1px solid #00A3CA; /*#4CAF50;*/
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+  font-size: 20px;
+}
+
+.completedMessage {
+  margin: 10% 2.5%;
+  /*margin-left: 2.5%;*/
+  display: block;
+}
+
+.completedMessage h2 {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.interview {
+  font-size:1.5em;
+}
+
+.score {
+  color: #4CAF50;
 }
