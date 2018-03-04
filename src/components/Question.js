@@ -18,17 +18,20 @@ class Question extends Component {
       },
       radioButton: {
         width: '95%',
-        marginBottom: 16,
+        marginBottom: 5,
         marginLeft: '2.5%',
         padding: '2.5em 0',
         // border: '1px solid black',
         backgroundColor: '#eee',
-        borderRadius: '10px'
+        borderRadius: '5px'
       },
       submit: {
         margin: '2.5%',
         marginLeft: '30%',
-        width: '40%'
+        width: '40%',
+        fontSize: '15px',
+        color: 'white',
+        backgroundColor: '#009DF0'
       },
       label: {
         'font-size': '20px',
@@ -41,17 +44,13 @@ class Question extends Component {
 function rightOrWrong(correct) {
   console.log('this is the correct state ',correct)
     if (correct===1)
-    return (<div>Correct Answer!</div>)
+    return (<div id="correctMsg" className="feedbackMsg">Correct!</div>)
     else if (correct===2)
-    return (<div>Incorrect Answer!</div>)
+    return (<div id="incorrectMsg" className="feedbackMsg">Try Again</div>)
 }
 
 function nextPage() {
-  return (
-
-  <RaisedButton label=">" primary={true} onClick={nextSubmit} />
-
-  )
+  return;
 }
 
 var shuffleAnswers = (input) => {
@@ -81,10 +80,50 @@ var shuffleAnswers = (input) => {
     return (
       <MuiThemeProvider>
         <div>
-          <span className='questionWrapper'>
+          {/*<span className='questionWrapper'>
             <h1 className="questionText">{question.question}</h1>
-          </span>
-          <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={onAnswerSelected}>
+          </span>*/}
+
+          <div className="container">
+
+            <h2>{question.question}</h2>
+
+
+            <ul>
+              <li>
+                <input type="radio" id="f-option" name="selector" />
+                <label for="f-option">{question.answers[0]}</label>
+                <div className="check"></div>
+              </li>
+
+              <li>
+                <input type="radio" id="s-option" name="selector" checked="checked"/>
+                <label for="s-option">{question.answers[1]}</label>
+                <div className="check"><div className="inside"></div></div>
+              </li>
+
+              <li>
+                <input type="radio" id="t-option" name="selector" />
+                <label for="t-option">{question.answers[2]}</label>
+                <div className="check"><div className="inside"></div></div>
+              </li>
+
+              <li>
+                <input type="radio" id="t-option" name="selector" />
+                <label for="t-option">{question.answers[3]}</label>
+                <div className="check"><div className="inside"></div></div>
+              </li>
+            </ul>
+          </div>
+
+          {/*<form onChange={onAnswerSelected}>
+            <input className="answerChoice" type="radio" value={0} /> {question.answers[0]} <br/>
+            <input className="answerChoice" type="radio" value={1} /> {question.answers[1]} <br/>
+            <input className="answerChoice" type="radio" value={2} /> {question.answers[2]} <br/>
+            <input className="answerChoice" type="radio" value={3} /> {question.answers[3]} <br/>
+          </form>*/}
+
+          {/*<RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={onAnswerSelected}>
             <RadioButton
               value={0}
               label={question.answers[0]}
@@ -109,11 +148,11 @@ var shuffleAnswers = (input) => {
               style={styles.radioButton}
               labelStyle={styles.label}
             />
-          </RadioButtonGroup>
+          </RadioButtonGroup>*/}
 
           {rightOrWrong(this.props.correct)}
-          <RaisedButton label="Submit" primary={true} style={styles.submit} onClick={onSubmit} />
-          {nextPage()}
+          <RaisedButton label="Submit" style={styles.submit} labelStyle={{fontSize: styles.submit.fontSize, color: styles.submit.color}} backgroundColor={styles.submit.backgroundColor} onClick={onSubmit} />
+          <RaisedButton label=">" labelStyle={{fontSize: styles.submit.fontSize, color: styles.submit.color}} backgroundColor={styles.submit.backgroundColor} onClick={nextSubmit} />
 
         </div>
       </MuiThemeProvider>
