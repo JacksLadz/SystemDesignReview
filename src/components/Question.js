@@ -8,6 +8,17 @@ import RaisedButton from 'material-ui/RaisedButton';
 class Question extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      isChecked: ''
+    }
+  }
+
+  toggleCheck = (e) => {
+    console.log('checked', e.target)
+    let stateCopy = Object.assign({}, this.state);
+     stateCopy.isChecked = !stateCopy.isChecked ? "checked" : false;
+     this.setState(stateCopy);
+     console.log('stateCopy', stateCopy);
   }
 
   render() {
@@ -49,10 +60,6 @@ function rightOrWrong(correct) {
     return (<div id="incorrectMsg" className="feedbackMsg">Try Again</div>)
 }
 
-function nextPage() {
-  return;
-}
-
 var shuffleAnswers = (input) => {
       let answersArr = [];
       for (let i = 0; i < input.length; i += 1) {
@@ -85,32 +92,38 @@ var shuffleAnswers = (input) => {
           </span>*/}
 
           <div className="container">
-
-            <h2>{question.question}</h2>
-
+            <h2 className="questionText">{question.question}</h2>
 
             <ul>
               <li>
-                <input type="radio" id="f-option" name="selector" />
-                <label for="f-option">{question.answers[0]}</label>
+                <input type="radio" id="f-option" name="selector" value={0}checked={this.state.isChecked} />
+                <label for="f-option" onClick={this.toggleCheck}>
+                  {question.answers[0]}
+                  </label>
                 <div className="check"></div>
               </li>
 
               <li>
-                <input type="radio" id="s-option" name="selector" checked="checked"/>
-                <label for="s-option">{question.answers[1]}</label>
+                <input type="radio" id="s-option" name="selector" value={1}checked={this.state.isChecked} />
+                <label for="s-option" onClick={this.toggleCheck}>
+                  {question.answers[1]}
+                </label>
                 <div className="check"><div className="inside"></div></div>
               </li>
 
               <li>
-                <input type="radio" id="t-option" name="selector" />
-                <label for="t-option">{question.answers[2]}</label>
+                <input type="radio" id="t-option" name="selector" value={2} checked={this.state.isChecked}/>
+                <label for="t-option" onClick={this.toggleCheck}>
+                  {question.answers[2]}
+                </label>
                 <div className="check"><div className="inside"></div></div>
               </li>
 
               <li>
-                <input type="radio" id="t-option" name="selector" />
-                <label for="t-option">{question.answers[3]}</label>
+                <input type="radio" id="t-option" name="selector" value={3}checked={this.state.isChecked}/>
+                <label for="t-option" onClick={this.toggleCheck}>
+                  {question.answers[3]}
+                </label>
                 <div className="check"><div className="inside"></div></div>
               </li>
             </ul>

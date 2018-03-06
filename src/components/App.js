@@ -183,7 +183,7 @@ class App extends Component {
         tempState.quiz.correct = 2;
         this.setState(tempState);
       }
-
+      console.log('submit state', this.state)
 
   }
 
